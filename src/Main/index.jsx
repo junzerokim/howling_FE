@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import KakaoMap from '../Map/KakaoMap';
-import Profile from '../Profile';
+import Header from '../Header';
 import Start from '../Start';
 
 function Main() {
@@ -16,7 +16,7 @@ function Main() {
   return (
     <Container>
       {!load && <Start />}
-      <Profile />
+      <Header />
       <KakaoMap />
     </Container>
   );

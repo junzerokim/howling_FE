@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import styled from 'styled-components';
 import { GiWolfHowl } from 'react-icons/gi';
-import ProfileImg from '../Modal/ProfileImg';
+import Profile from '../Modal/ProfileModal';
 
 function Logo() {
   return (
@@ -21,13 +21,13 @@ function Logo() {
   );
 }
 
-function Profile() {
+function Header() {
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <Logo />
-      <ProfileImg />
+      <Profile />
     </div>
   );
 }
 
-export default Profile;
+export default Header;
