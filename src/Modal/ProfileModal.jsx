@@ -4,27 +4,26 @@ import Modal from 'react-modal';
 import ProfileContent from '../Profile/ProfileContent';
 import profileImg from '../KakaoTalk_Photo_2023-02-14-17-39-05.jpeg';
 
-const StyledModal = {
-  overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
-  content: {
-    position: 'fixed',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    top: 'fit-content',
-    left: 'fit-content',
-    bottom: 'fit-content',
-    right: 'fit-content',
-    transform: 'translate(530%, 5%)',
-    border: '0',
-    boxShadow: '0 0 5px 2px grey',
-    borderRadius: '20px',
-  },
-};
-
 function ProfileImage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  const StyledModal = {
+    overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
+    content: {
+      position: 'fixed',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-end',
+      top: 'fit-content',
+      left: 'fit-content',
+      bottom: 'fit-content',
+      right: 'fit-content',
+      transform: 'translate(530%, 5%)',
+      border: '0',
+      boxShadow: '0 0 5px 2px grey',
+      borderRadius: '20px',
+    },
+  };
   return (
     <>
       <ProfileImg type="button" onClick={() => setModalIsOpen(true)} />
