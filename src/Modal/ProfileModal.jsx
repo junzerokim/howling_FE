@@ -18,7 +18,7 @@ function ProfileModal() {
       left: 'fit-content',
       bottom: 'fit-content',
       right: 'fit-content',
-      transform: 'translate(530%, 5%)',
+      transform: 'translate(82vw, 3vh)',
       border: '0',
       boxShadow: '0 0 5px 2px grey',
       borderRadius: '20px',
