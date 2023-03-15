@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 import ProfileContent from '../Profile/ProfileContent';
 import profileImg from '../KakaoTalk_Photo_2023-02-14-17-39-05.jpeg';
 
-function ProfileImage() {
+function ProfileModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const StyledModal = {
@@ -35,7 +35,7 @@ function ProfileImage() {
   );
 }
 
-export default ProfileImage;
+export default ProfileModal;
 
 const ProfileImg = styled.div`
   width: 70px;
