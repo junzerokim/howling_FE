@@ -24,9 +24,10 @@ function ProfileModal() {
       borderRadius: '20px',
     },
   };
+
   return (
     <>
-      <ProfileImg type="button" onClick={() => setModalIsOpen(true)} />
+      <ProfileImg onClick={() => setModalIsOpen(true)} />
       <Modal style={StyledModal} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <CloseBtn onClick={() => setModalIsOpen(false)}>X</CloseBtn>
         <ProfileContent />
@@ -44,6 +45,7 @@ const ProfileImg = styled.div`
   background-image: url(${profileImg});
   background-size: cover;
   display: block;
+  cursor: pointer;
 `;
 
 const CloseBtn = styled.button`
