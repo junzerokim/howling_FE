@@ -1,10 +1,10 @@
 // import { isVisible } from '@testing-library/user-event/dist/utils';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import KakaoMap from '../Map/KakaoMap';
-import Header from '../Header';
-import Start from '../Start';
-import InputFeedModal from '../Modal/InputFeedModal';
+import KakaoMap from '../../components/Map/KakaoMap';
+import Header from '../../components/Header';
+import Intro from '../../components/Intro';
+import InputFeedModal from '../../components/Modal/InputFeedModal';
 
 function Main() {
   const [load, setLoad] = useState(false);
@@ -16,7 +16,7 @@ function Main() {
 
   return (
     <Container>
-      {!load && <Start />}
+      {!load && <Intro />}
       <Header />
       <KakaoMap />
       <InputFeedModal />
