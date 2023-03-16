@@ -30,6 +30,7 @@ const LogoContainer = styled.div`
   font-size: 30px;
   font-style: italic;
   color: rgb(64, 63, 63);
+  margin: 10px;
   cursor: pointer;
 `;
 
