@@ -8,7 +8,7 @@ import Start from '../Start';
 function Main() {
   const [load, setLoad] = useState(false);
   useEffect(() => {
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       setLoad(true);
     }, 2500);
   });
