@@ -34,7 +34,6 @@ const LogoContainer = styled.div`
   font-size: 30px;
   font-style: italic;
   color: rgb(64, 63, 63);
-  margin: 10px;
 `;
 
 const HiddenLogoContainer = styled.div`
@@ -47,4 +46,5 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 10px;
 `;
