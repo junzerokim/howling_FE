@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
-import profileImg from '../KakaoTalk_Photo_2023-02-14-17-39-05.jpeg';
+// import profileImg from '../KakaoTalk_Photo_2023-02-14-17-39-05.jpeg';
+// import profileImg from '../../../public/image/youngmin.jpeg';
 import MyFeedContent from '../Feed/MyFeedContent';
 
 function ProfileModal() {
@@ -65,10 +66,10 @@ const ProfileBtn = styled.button`
 `;
 
 const ProfileImg = styled.div`
+  background-image: url('/image/youngmin.jpeg');
   width: 70px;
   height: 70px;
   border-radius: 70%;
-  background-image: url(${profileImg});
   background-size: cover;
   display: block;
 `;

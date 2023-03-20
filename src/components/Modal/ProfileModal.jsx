@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import ProfileContent from '../Profile/ProfileContent';
-import profileImg from '../KakaoTalk_Photo_2023-02-14-17-39-05.jpeg';
 
 function ProfileModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -24,9 +23,10 @@ function ProfileModal() {
       borderRadius: '20px',
     },
   };
+
   return (
     <>
-      <ProfileImg type="button" onClick={() => setModalIsOpen(true)} />
+      <ProfileImg src="/image/youngmin.jpeg" onClick={() => setModalIsOpen(true)} />
       <Modal style={StyledModal} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         <CloseBtn onClick={() => setModalIsOpen(false)}>X</CloseBtn>
         <ProfileContent />
@@ -38,10 +38,10 @@ function ProfileModal() {
 export default ProfileModal;
 
 const ProfileImg = styled.div`
+  background-image: url('/image/youngmin.jpeg');
   width: 70px;
   height: 70px;
   border-radius: 70%;
-  background-image: url(${profileImg});
   background-size: cover;
   display: block;
 `;

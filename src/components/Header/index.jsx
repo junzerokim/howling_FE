@@ -1,27 +1,23 @@
-import { React, useState } from 'react';
 import styled from 'styled-components';
 import { GiWolfHowl } from 'react-icons/gi';
 import Profile from '../Modal/ProfileModal';
 
-function HiddenLogo() {
-  return <HiddenLogoContainer>a</HiddenLogoContainer>;
+function Header() {
+  return (
+    <HeaderContainer>
+      <HiddenBox />
+      <Logo />
+      <Profile />
+    </HeaderContainer>
+  );
 }
+
 function Logo() {
   return (
     <LogoContainer>
       <GiWolfHowl size="50" style={{ color: 'rgb(22, 64, 123)' }} />
       Howling
     </LogoContainer>
-  );
-}
-
-function Header() {
-  return (
-    <HeaderContainer>
-      <HiddenLogo />
-      <Logo />
-      <Profile />
-    </HeaderContainer>
   );
 }
 
@@ -36,7 +32,7 @@ const LogoContainer = styled.div`
   color: rgb(64, 63, 63);
 `;
 
-const HiddenLogoContainer = styled.div`
+const HiddenBox = styled.div`
   color: white;
   width: 70px;
   height: 70px;
@@ -46,5 +42,9 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD:src/Header/index.jsx
   margin: 11px;
+=======
+  margin: 10px;
+>>>>>>> origin:src/components/Header/index.jsx
 `;

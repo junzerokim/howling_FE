@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import logoSrc from '../howling_img.png';
 
 function Start() {
   return (
@@ -10,7 +9,7 @@ function Start() {
         animate={{ y: 0, scale: 1 }}
         initial={{ y: -100, scale: 0 }}
         transition={{ type: 'spring', duration: 3, bounce: 0.3 }}
-        src={logoSrc}
+        src="/image/howlingLogo.png"
         alt="logo-img"
       />
       <Title>Howling</Title>
