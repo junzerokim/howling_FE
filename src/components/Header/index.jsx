@@ -42,5 +42,9 @@ const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD:src/Header/index.jsx
+  margin: 11px;
+=======
   margin: 10px;
+>>>>>>> origin:src/components/Header/index.jsx
 `;
