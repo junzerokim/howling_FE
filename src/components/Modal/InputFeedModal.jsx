@@ -3,7 +3,34 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 
 function InputFeedModal() {
-  return <Btn>+</Btn>;
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const StyledModal = {
+    overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
+    content: {
+      position: 'fixed',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-end',
+      top: '15%',
+      left: '50%',
+      width: '30%',
+      height: '70%',
+      transform: 'translate(-50%, 0)',
+      border: '0',
+      boxShadow: '0 0 5px 2px grey',
+      borderRadius: '20px',
+    },
+  };
+
+  return (
+    <>
+      <Btn onClick={() => setModalIsOpen(true)}>+</Btn>
+      <Modal style={StyledModal} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
+      </Modal>
+    </>
+  );
 }
 
 export default InputFeedModal;
@@ -30,4 +57,14 @@ const Btn = styled.button`
     color: white;
     background-color: rgba(22, 64, 123, 1);
   }
+`;
+
+const CloseBtn = styled.button`
+  width: 15%;
+  border: 0;
+  background-color: white;
+  :hover {
+    background-color: #f0f0f0;
+  }
+  font-size: 20px;
 `;
