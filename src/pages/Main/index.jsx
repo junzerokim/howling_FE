@@ -5,8 +5,10 @@ import KakaoMap from '../../components/Map/KakaoMap';
 import Header from '../../components/Header';
 import Intro from '../../components/Intro';
 import InputFeedModal from '../../components/Modal/InputFeedModal';
+import MarkerModal from '../../components/Modal/MarkerModal';
 
 function Main() {
+  const [modalIsOpen, setModalIsOpen] = useState({ isOpen: false, id: null });
   const [load, setLoad] = useState(false);
   useEffect(() => {
     setTimeout(() => {
@@ -16,9 +18,10 @@ function Main() {
 
   return (
     <Container>
-      {!load && <Intro />}
+      {/* {!load && <Intro />} */}
       <Header />
-      <KakaoMap />
+      <KakaoMap setModalIsOpen={setModalIsOpen} />
+      <MarkerModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
       <InputFeedModal />
     </Container>
   );

@@ -15,7 +15,7 @@ function ProfileModal() {
       alignItems: 'flex-end',
       top: '17px',
       left: '100%',
-      width: 'fit-content',
+      width: '40%',
       height: '40%',
       transform: 'translate(-105%, 0)',
       border: '0',

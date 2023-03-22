@@ -1,6 +1,6 @@
 const { kakao } = window;
 
-export default function KakaoMapScript() {
+export default function KakaoMapScript(setModalIsOpen) {
   const container = document.getElementById('map');
 
   const mockData = [
@@ -25,9 +25,9 @@ export default function KakaoMapScript() {
 
     const kakaoMap = new kakao.maps.Map(container, options); // 지도를 생성
 
-    for (let i = 0; i < mockData.length; i++) {
+    mockData.forEach((mock) => {
       const marker = new kakao.maps.Marker({
-        position: new kakao.maps.LatLng(mockData[i][0], mockData[i][1]),
+        position: new kakao.maps.LatLng(mock[0], mock[1]),
         map: kakaoMap,
       }); // 마커 생성
 
@@ -36,9 +36,9 @@ export default function KakaoMapScript() {
       marker.setDraggable(true);
 
       kakao.maps.event.addListener(marker, 'click', (mouseEvent) => {
-        console.log(mockData[i][2]);
+        setModalIsOpen({ isOpen: true, id: mock[2] });
       });
-    }
+    });
 
     kakao.maps.event.addListener(kakaoMap, 'click', (mouseEvent) => {
       // 클릭한 위치 경도 위도 가져옴

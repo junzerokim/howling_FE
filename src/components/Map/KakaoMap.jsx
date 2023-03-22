@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import KakaoMapScript from './KakaoMapScript';
 
-export default function KakaoMap() {
+export default function KakaoMap({ setModalIsOpen }) {
   useEffect(() => {
-    KakaoMapScript();
+    KakaoMapScript(setModalIsOpen);
   }, []);
 
   return <Map id="map" />;
