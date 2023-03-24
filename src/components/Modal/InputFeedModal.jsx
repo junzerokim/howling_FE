@@ -2,18 +2,14 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import KakaoMapScript from '../Map/KakaoMapScript';
+import InputFeedContent from '../Feed/InputFeedContent';
 
 function InputFeedModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapPosition, setMapPosition] = useState(null);
-  const [text, setText] = useState({ title: '', detail: '' });
-  const onChangetext = (e) => {
-    setText({
-      ...text,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [create, setCreate] = useState(false);
+  const [consoletext, setConsoletext] = useState(null);
   const StyledModal = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
     content: {
@@ -45,21 +41,25 @@ function InputFeedModal() {
     }
   }, [mapLoaded]);
 
+  const handleTextChange = ({ title, detail }) => {
+    setConsoletext({ title, detail });
+  };
+
   return (
     <>
       <Btn onClick={() => setModalIsOpen(true)}>+</Btn>
       <Modal style={StyledModal} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         {mapLoaded && <KakaoMapScript position={mapPosition} />}
         <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
-        <input id="title" name="title" onChange={onChangetext} />
-        <input id="detail" name="detail" onChange={onChangetext} />
+        <InputFeedContent onTextChange={handleTextChange} />
         <CreateBtn
           onClick={() => {
             console.log({
               position: mapPosition,
-              content: text,
+              content: consoletext,
             });
             setModalIsOpen(false);
+            setCreate(true);
           }}
         >
           등록
