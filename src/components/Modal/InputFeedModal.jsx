@@ -7,7 +7,13 @@ function InputFeedModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapPosition, setMapPosition] = useState(null);
-  const text = '이 위치에 글을 등록합니다.';
+  const [text, setText] = useState({ title: '', detail: '' });
+  const onChangetext = (e) => {
+    setText({
+      ...text,
+      [e.target.name]: e.target.value,
+    });
+  };
   const StyledModal = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
     content: {
@@ -45,6 +51,8 @@ function InputFeedModal() {
       <Modal style={StyledModal} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         {mapLoaded && <KakaoMapScript position={mapPosition} />}
         <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
+        <input id="title" name="title" onChange={onChangetext} />
+        <input id="detail" name="detail" onChange={onChangetext} />
         <CreateBtn
           onClick={() => {
             console.log({
