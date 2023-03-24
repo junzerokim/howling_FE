@@ -1,6 +1,6 @@
 const { kakao } = window;
 
-export default function KakaoMapScript(setModalIsOpen) {
+export default function KakaoMapScript(setModalIsOpen, callback) {
   const container = document.getElementById('map');
 
   const mockData = [
@@ -16,6 +16,7 @@ export default function KakaoMapScript(setModalIsOpen) {
     const lat = position.coords.latitude; // 현재 경도
     const lon = position.coords.longitude; // 현재 위도
 
+    callback({ lat, lon });
     // 지도를 표시할 div
     const options = {
       center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표

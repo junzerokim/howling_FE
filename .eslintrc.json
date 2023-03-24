@@ -16,6 +16,8 @@
     "no-unused-vars": "off",
     "no-console": "off",
     "no-plusplus": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "implicit-arrow-linebreak": "off",
+    "react/jsx-curly-newline": "off"
   }
 }

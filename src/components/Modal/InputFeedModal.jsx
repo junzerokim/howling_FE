@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
+import KakaoMapScript from '../Map/KakaoMapScript';
 
 function InputFeedModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
+  const [mapLoaded, setMapLoaded] = useState(false);
+  const [mapPosition, setMapPosition] = useState(null);
+  const text = '이 위치에 글을 등록합니다.';
   const StyledModal = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
     content: {
@@ -23,11 +26,36 @@ function InputFeedModal() {
     },
   };
 
+  useEffect(() => {
+    if (!mapLoaded) {
+      KakaoMapScript(
+        () => {
+          setMapLoaded(true);
+        },
+        ({ lat, lon }) => {
+          setMapPosition({ longitude: lat, latitude: lon });
+        },
+      );
+    }
+  }, [mapLoaded]);
+
   return (
     <>
       <Btn onClick={() => setModalIsOpen(true)}>+</Btn>
       <Modal style={StyledModal} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        {mapLoaded && <KakaoMapScript position={mapPosition} />}
         <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
+        <CreateBtn
+          onClick={() => {
+            console.log({
+              position: mapPosition,
+              content: text,
+            });
+            setModalIsOpen(false);
+          }}
+        >
+          등록
+        </CreateBtn>
       </Modal>
     </>
   );
@@ -60,6 +88,16 @@ const Btn = styled.button`
 `;
 
 const CloseBtn = styled.button`
+  width: 15%;
+  border: 0;
+  background-color: white;
+  :hover {
+    background-color: #f0f0f0;
+  }
+  font-size: 20px;
+`;
+
+const CreateBtn = styled.button`
   width: 15%;
   border: 0;
   background-color: white;
