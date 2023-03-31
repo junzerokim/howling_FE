@@ -8,7 +8,6 @@ function InputFeedModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapPosition, setMapPosition] = useState(null);
-  const [create, setCreate] = useState(false);
   const [consoletext, setConsoletext] = useState(null);
   const StyledModal = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
@@ -34,8 +33,8 @@ function InputFeedModal() {
         () => {
           setMapLoaded(true);
         },
-        ({ lat, lon }) => {
-          setMapPosition({ longitude: lat, latitude: lon });
+        (locPosition) => {
+          setMapPosition(locPosition);
         },
       );
     }
@@ -59,7 +58,6 @@ function InputFeedModal() {
               content: consoletext,
             });
             setModalIsOpen(false);
-            setCreate(true);
           }}
         >
           등록
