@@ -8,7 +8,7 @@ function InputFeedModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapPosition, setMapPosition] = useState(null);
-  const [consoletext, setConsoletext] = useState(null);
+  const [userText, setUserText] = useState(null);
   const StyledModal = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
     content: {
@@ -33,15 +33,16 @@ function InputFeedModal() {
         () => {
           setMapLoaded(true);
         },
-        (locPosition) => {
-          setMapPosition(locPosition);
+        (currentPosition) => {
+          setMapPosition(currentPosition);
         },
       );
     }
   }, [mapLoaded]);
 
+  // 사용자가 입력한 피드의 제목과 내용을 상태로 저장
   const handleTextChange = ({ title, detail }) => {
-    setConsoletext({ title, detail });
+    setUserText({ title, detail });
   };
 
   return (
@@ -55,7 +56,7 @@ function InputFeedModal() {
           onClick={() => {
             console.log({
               position: mapPosition,
-              content: consoletext,
+              content: userText,
             });
             setModalIsOpen(false);
           }}

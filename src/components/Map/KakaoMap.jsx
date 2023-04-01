@@ -4,7 +4,7 @@ import KakaoMapScript from './KakaoMapScript';
 
 export default function KakaoMap({ setModalIsOpen }) {
   const currentPosition = (lat, lon) => {
-    console.log(lat, lon);
+    // console.log(lat, lon);
   };
   useEffect(() => {
     KakaoMapScript(setModalIsOpen, currentPosition);
