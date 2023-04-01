@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import KakaoMapScript from '../Map/KakaoMapScript';
+import InputFeedContent from '../Feed/InputFeedContent';
 
 function InputFeedModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapPosition, setMapPosition] = useState(null);
-  const text = '이 위치에 글을 등록합니다.';
+  const [userText, setUserText] = useState(null);
   const StyledModal = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
     content: {
@@ -32,12 +33,17 @@ function InputFeedModal() {
         () => {
           setMapLoaded(true);
         },
-        ({ lat, lon }) => {
-          setMapPosition({ longitude: lat, latitude: lon });
+        (currentPosition) => {
+          setMapPosition(currentPosition);
         },
       );
     }
   }, [mapLoaded]);
+
+  // 사용자가 입력한 피드의 제목과 내용을 상태로 저장
+  const handleTextChange = ({ title, detail }) => {
+    setUserText({ title, detail });
+  };
 
   return (
     <>
@@ -45,11 +51,12 @@ function InputFeedModal() {
       <Modal style={StyledModal} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         {mapLoaded && <KakaoMapScript position={mapPosition} />}
         <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
+        <InputFeedContent onTextChange={handleTextChange} />
         <CreateBtn
           onClick={() => {
             console.log({
               position: mapPosition,
-              content: text,
+              content: userText,
             });
             setModalIsOpen(false);
           }}

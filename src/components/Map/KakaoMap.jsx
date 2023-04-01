@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import KakaoMapScript from './KakaoMapScript';
 
 export default function KakaoMap({ setModalIsOpen }) {
+  const currentPosition = (lat, lon) => {
+    // console.log(lat, lon);
+  };
   useEffect(() => {
-    KakaoMapScript(setModalIsOpen);
+    KakaoMapScript(setModalIsOpen, currentPosition);
   }, []);
 
   return <Map id="map" />;
