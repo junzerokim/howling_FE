@@ -8,7 +8,7 @@ function InputFeedModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapPosition, setMapPosition] = useState(null);
-  const [userText, setUserText] = useState(null);
+  const [feedInfo, setFeedInfo] = useState(null);
   const StyledModal = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
     content: {
@@ -41,28 +41,30 @@ function InputFeedModal() {
   }, [mapLoaded]);
 
   // 사용자가 입력한 피드의 제목과 내용을 상태로 저장
-  const handleTextChange = ({ title, detail }) => {
-    setUserText({ title, detail });
+  const handleTextChange = ({ detail }) => {
+    setFeedInfo({ detail });
   };
 
   return (
     <>
-      <Btn onClick={() => setModalIsOpen(true)}>+</Btn>
       <Modal style={StyledModal} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <Btn onClick={() => setModalIsOpen(true)}>+</Btn>
         {mapLoaded && <KakaoMapScript position={mapPosition} />}
-        <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
-        <InputFeedContent onTextChange={handleTextChange} />
-        <CreateBtn
-          onClick={() => {
-            console.log({
-              position: mapPosition,
-              content: userText,
-            });
-            setModalIsOpen(false);
-          }}
-        >
-          등록
-        </CreateBtn>
+        <Container>
+          <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
+          <InputFeedContent onTextChange={handleTextChange} />
+          <CreateBtn
+            onClick={() => {
+              console.log({
+                position: mapPosition,
+                content: feedInfo,
+              });
+              setModalIsOpen(false);
+            }}
+          >
+            등록
+          </CreateBtn>
+        </Container>
       </Modal>
     </>
   );
@@ -92,6 +94,13 @@ const Btn = styled.button`
     color: white;
     background-color: rgba(22, 64, 123, 1);
   }
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
 `;
 
 const CloseBtn = styled.button`
