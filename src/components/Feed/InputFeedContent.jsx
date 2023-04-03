@@ -20,8 +20,7 @@ function InputFeedContent({ onTextChange }) {
 
   return (
     <InputContainer>
-      <input id="title" name="title" placeholder="제목을 입력하세요..." onChange={onChangetext} />
-      <input id="detail" name="detail" placeholder="내용을 입력하세요..." onChange={onChangetext} />
+      <textarea id="detail" name="detail" placeholder="내용을 입력하세요..." onChange={onChangetext} />
     </InputContainer>
   );
 }
