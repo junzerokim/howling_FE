@@ -13,9 +13,6 @@ function InputFeedModal() {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
     content: {
       position: 'fixed',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-end',
       top: '15%',
       left: '50%',
       width: '30%',
@@ -47,8 +44,8 @@ function InputFeedModal() {
 
   return (
     <>
+      <Btn onClick={() => setModalIsOpen(true)}>+</Btn>
       <Modal style={StyledModal} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
-        <Btn onClick={() => setModalIsOpen(true)}>+</Btn>
         {mapLoaded && <KakaoMapScript position={mapPosition} />}
         <Container>
           <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
@@ -99,8 +96,9 @@ const Btn = styled.button`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
 `;
 
 const CloseBtn = styled.button`
@@ -111,6 +109,7 @@ const CloseBtn = styled.button`
     background-color: #f0f0f0;
   }
   font-size: 20px;
+  margin-left: auto;
 `;
 
 const CreateBtn = styled.button`
@@ -121,4 +120,5 @@ const CreateBtn = styled.button`
     background-color: #f0f0f0;
   }
   font-size: 20px;
+  margin-bottom: 20px;
 `;
