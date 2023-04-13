@@ -8,14 +8,11 @@ function InputFeedModal() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapPosition, setMapPosition] = useState(null);
-  const [userText, setUserText] = useState(null);
+  const [feedInfo, setFeedInfo] = useState(null);
   const StyledModal = {
     overlay: { backgroundColor: 'rgba(0, 0, 0, 0.3)', zIndex: '999' },
     content: {
       position: 'fixed',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-end',
       top: '15%',
       left: '50%',
       width: '30%',
@@ -41,8 +38,8 @@ function InputFeedModal() {
   }, [mapLoaded]);
 
   // 사용자가 입력한 피드의 제목과 내용을 상태로 저장
-  const handleTextChange = ({ title, detail }) => {
-    setUserText({ title, detail });
+  const handleTextChange = ({ detail }) => {
+    setFeedInfo({ detail });
   };
 
   return (
@@ -50,19 +47,21 @@ function InputFeedModal() {
       <Btn onClick={() => setModalIsOpen(true)}>+</Btn>
       <Modal style={StyledModal} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         {mapLoaded && <KakaoMapScript position={mapPosition} />}
-        <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
-        <InputFeedContent onTextChange={handleTextChange} />
-        <CreateBtn
-          onClick={() => {
-            console.log({
-              position: mapPosition,
-              content: userText,
-            });
-            setModalIsOpen(false);
-          }}
-        >
-          등록
-        </CreateBtn>
+        <Container>
+          <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
+          <InputFeedContent onTextChange={handleTextChange} />
+          <CreateBtn
+            onClick={() => {
+              console.log({
+                position: mapPosition,
+                content: feedInfo,
+              });
+              setModalIsOpen(false);
+            }}
+          >
+            등록
+          </CreateBtn>
+        </Container>
       </Modal>
     </>
   );
@@ -94,6 +93,14 @@ const Btn = styled.button`
   }
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+`;
+
 const CloseBtn = styled.button`
   width: 15%;
   border: 0;
@@ -102,6 +109,7 @@ const CloseBtn = styled.button`
     background-color: #f0f0f0;
   }
   font-size: 20px;
+  margin-left: auto;
 `;
 
 const CreateBtn = styled.button`
@@ -112,4 +120,5 @@ const CreateBtn = styled.button`
     background-color: #f0f0f0;
   }
   font-size: 20px;
+  margin-bottom: 20px;
 `;

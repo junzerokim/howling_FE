@@ -18,21 +18,13 @@ function InputFeedContent({ onTextChange }) {
     onTextChange(text);
   }, [text]);
 
-  return (
-    <InputContainer>
-      <input id="title" name="title" placeholder="제목을 입력하세요..." onChange={onChangetext} />
-      <input id="detail" name="detail" placeholder="내용을 입력하세요..." onChange={onChangetext} />
-    </InputContainer>
-  );
+  return <TextArea id="detail" name="detail" placeholder="내용을 입력하세요..." onChange={onChangetext} />;
 }
 
 export default InputFeedContent;
 
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  gap: 10px;
+const TextArea = styled.textarea`
+  width: 20vw;
+  height: 50vh;
+  border-radius: 10px;
 `;
