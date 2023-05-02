@@ -1,22 +1,23 @@
 const { kakao } = window;
 
+const mockData = [];
+
+export function addData(lat, lon) {
+  const id = mockData.length + 1;
+  const newData = [lat + 0.001 * id, lon + 0.001 * id, id];
+  mockData.push(newData);
+  console.log(mockData);
+}
+
 export default function KakaoMapScript(setModalIsOpen, callback) {
   const container = document.getElementById('map');
-
-  const mockData = [
-    [37.295995, 127.147474, 1],
-    [37.294587, 127.150755, 2],
-    [37.298047, 127.150412, 3],
-    [37.386798, 127.119999, 4],
-    [37.385033, 127.118709, 5],
-    [37.384779, 127.120369, 6],
-  ];
 
   navigator.geolocation.getCurrentPosition((position) => {
     const lat = position.coords.latitude; // 현재 경도
     const lon = position.coords.longitude; // 현재 위도
 
     callback({ lat, lon });
+
     // 지도를 표시할 div
     const options = {
       center: new kakao.maps.LatLng(lat, lon), // 지도의 중심좌표
@@ -33,7 +34,6 @@ export default function KakaoMapScript(setModalIsOpen, callback) {
       }); // 마커 생성
 
       marker.setMap(kakaoMap); // 마커 실행
-
       marker.setDraggable(true);
 
       kakao.maps.event.addListener(marker, 'click', (mouseEvent) => {

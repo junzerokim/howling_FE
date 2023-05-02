@@ -5,7 +5,7 @@ import KakaoMap from '../../components/Map/KakaoMap';
 import Header from '../../components/Header';
 import Intro from '../../components/Intro';
 import InputFeedModal from '../../components/Modal/InputFeedModal';
-import MarkerModal from '../../components/Modal/MarkerModal';
+// import MarkerModal from '../../components/Modal/MarkerModal';
 
 function Main() {
   const [modalIsOpen, setModalIsOpen] = useState({ isOpen: false, id: null });
@@ -21,7 +21,7 @@ function Main() {
       {/* {!load && <Intro />} */}
       <Header />
       <KakaoMap setModalIsOpen={setModalIsOpen} />
-      <MarkerModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
+      {/* <MarkerModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} /> */}
       <InputFeedModal />
     </Container>
   );
