@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
-import KakaoMapScript from '../Map/KakaoMapScript';
+import KakaoMapScript, { addData } from '../Map/KakaoMapScript';
 import InputFeedContent from '../Feed/InputFeedContent';
 
 function InputFeedModal() {
@@ -42,6 +42,15 @@ function InputFeedModal() {
     setFeedInfo({ detail });
   };
 
+  const handleCreateBtn = () => {
+    console.log({
+      position: mapPosition,
+      content: feedInfo,
+    });
+    addData(mapPosition.lat, mapPosition.lon);
+    setModalIsOpen(false);
+  };
+
   return (
     <>
       <Btn onClick={() => setModalIsOpen(true)}>+</Btn>
@@ -50,17 +59,7 @@ function InputFeedModal() {
         <Container>
           <CloseBtn onClick={() => setModalIsOpen(false)}>x</CloseBtn>
           <InputFeedContent onTextChange={handleTextChange} />
-          <CreateBtn
-            onClick={() => {
-              console.log({
-                position: mapPosition,
-                content: feedInfo,
-              });
-              setModalIsOpen(false);
-            }}
-          >
-            등록
-          </CreateBtn>
+          <CreateBtn onClick={handleCreateBtn}>등록</CreateBtn>
         </Container>
       </Modal>
     </>
